@@ -1,5 +1,6 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() => runApp(MyApp());
 
@@ -47,11 +48,25 @@ class RandomWordsState extends State<RandomWords> {
   }
 
   Widget _buildRow(WordPair pair){
+    final title = pair.asPascalCase;
     return ListTile(
       title: Text(
-        pair.asPascalCase,
+        title,
         style: _biggerFont,
       ),
+      onTap: (){
+        _showToast(title);
+      },
+    );
+  }
+
+  void _showToast(String txt){
+    Fluttertoast.showToast(msg: txt,
+      backgroundColor: Colors.white,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      fontSize: 16.0,
+      textColor: Colors.black
     );
   }
   

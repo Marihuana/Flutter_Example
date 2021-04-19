@@ -28,11 +28,14 @@ class SampleAppPage extends StatefulWidget {
 class _SampleAppPageState extends State<SampleAppPage> {
   // Default placeholder text
   String textToShow = "I Like Flutter";
+  MaterialColor fontColor = Colors.red;
+
 
   void _updateText() {
     setState(() {
       // update the text
       textToShow = "Flutter is Awesome!";
+      fontColor = Colors.blue;
     });
   }
 
@@ -42,7 +45,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
       appBar: AppBar(
         title: Text("Sample App"),
       ),
-      body: Center(child: Text(textToShow)),
+      body: Center(child: Text(textToShow, style: TextStyle(color: fontColor))),
       floatingActionButton: FloatingActionButton(
         onPressed: _updateText,
         tooltip: 'Update Text',
